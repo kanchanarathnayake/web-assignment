@@ -1,1 +1,1 @@
-# kanchanarathnayake.web-assignment
+# web-assignment
