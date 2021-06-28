@@ -88,24 +88,23 @@ session_start();
       ?>
 		
 		<ul>
-			<li id="titlehead"><p id="title">Megh  a Pharma Pvt(Ltd)</p></li>
+			<li id="titlehead"><p id="title">Megha   Pharma Pvt(Ltd)</p></li>
 			<li style=margin-right:10px;><a href="pharmacist_logout.php">Logout</a></li>
-			<li><a class="active" href="pharmacist.php">Stock Keeper</a></li>
+			<li><a class="active" href="pharmacist.php">Sales Officer</a></li>
 			</ul>
 		
 		
-		<h2 style="font-style:italic; font-size:35px;padding-left:30px;">Stock Keeper Dashboard</h2>
+		<h2 style="font-style:italic; font-size:35px;padding-left:30px;">Sales Officer Dashboard</h2>
 		
 		
 		<div class="grid-container">
 			<div style="text-align:right;"><img src="image\view.png"></div>  
-			<div ><button type="button" class="btn" onclick="location.href='add_medicine.php'">Add Medicine</button></div>
+			<div ><button type="button" class="btn" onclick="location.href='salesreport_home.php'">Get Sales report </button></div>
 			<div style="text-align:right;"><img src="image\viewe.png"></div>  
-			<div ><button type="button" class="btn" onclick="location.href='view_stock.php'">View Stock</button></div>
+			<div ><button type="button" class="btn" onclick="location.href='confirm_order.php'">Confirm Orders</button></div>
 			<div style="text-align:right;"><img src="image\userm.png"></div>  
-			<div ><button type="button" class="btn" onclick="location.href='view_puser.php'">View User</button></div>
-            <div style="text-align:right;"><img src="image\view.png"></div>
-			<div><button type="button" class="btn" onclick="location.href='update_inventory.php'">Update Inventory</button></div>
+			<div ><button type="button" class="btn" onclick="location.href='salesreport_home.php'">View Stock</button></div>
+            
 		</div>
 		
 		

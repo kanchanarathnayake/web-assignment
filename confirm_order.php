@@ -1,6 +1,5 @@
 <html>
 <?php
-// Start the session
 session_start();
 ?>
 	<head>
@@ -8,11 +7,13 @@ session_start();
 			
 			#title{
 				background-color:#00b300;
-				font-size:24px;
-				color:#E53935;
+				font-size:33px;
+				
 				
 				color:white;
 				margin-left:20px;
+				margin-top:20px;
+				margin-bottom:20px;
 				
 				}
 				
@@ -126,39 +127,58 @@ session_start();
 	<body>
 		
 	<?php
-        if($_SESSION["adminid"] === ""){
-          echo $_SESSION['adminid'];
+        if($_SESSION["salesid"] === ""){
+          echo $_SESSION['salesid'];
           echo "login";
-          header("Location: home.php ");
+          header("Location:home.php");
         }
       ?>
 		
 		<ul>
-			<li id="titlehead"><p id="title">Mega Phama Pvt(Ltd)</p></li>
-			<li style=margin-right:10px;><a href="admin_logout.php">Logout</a></li>
-			<li><a class="active" href="admin_home.php">Admin</a></li>
-			</ul>
+			<li id="titlehead"><p id="title">Mega Pharma Pvt(Ltd)</p></li>
+			<li style=margin-right:10px;><a href="pharmacist_logout.php">Logout</a></li>
+			<li><a class="active" href="sales_home.php">Customer</a></li>
+		</ul>
 		
 		
 		
-		<h2 style="font-style:italic; font-size:30px;padding-left:30px;">Delete Staff</h2>
 		
-		<div style="text-align:center;"> <img src="image\deletemain.png">  </div>
+		<h2 style="font-style:italic; font-size:30px;padding-left:30px;">Confirm Order</h2>
+		
+		<div style="text-align:center;"> <img src="image\medicine.png">  </div>
 		
 		<div class="container">
-			<form action="delete_admin_action.php" method = "get">
+			<form action="confirm_order_action.php" method = "get">
 				
 				<div class="row">
 					<div class="col-25">
-						<label for="lname">Admin Id</label>
+						<label for="lname">Order ID</label>
 					</div>
 					<div class="col-75">
-						<input type="text" pattern=".{1,}" required name="staffid" placeholder="Enter staff Id...">
+						<input type="text" pattern=".{1,}" required name="orderid" placeholder="Enter Order No...">
+					</div>
+				</div>
+                
+                <div class="row">
+					<div class="col-25">
+						<label for="lname">Order Type</label>
+					</div>
+					<div class="col-75">
+                        <select pattern=".{1,}" required name="type">
+                            <option>Pending</option>
+                            <option>Confirm</option>
+                        
+                        </select>
+						
 					</div>
 				</div>
 				
+				
+				
+				
+				
 				<div class="row">
-					<input type="submit" style="margin-right:600px; margin-top:10px;" value="Delete">
+					<input type="submit" style="margin-right:600px; margin-top:10px;" value="Confirm Order">
 				</div>
 			</form>
 			

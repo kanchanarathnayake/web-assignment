@@ -154,15 +154,15 @@ session_start();
 		
 	
 	
-		$sql='SELECT * FROM user_database';
+		$sql='SELECT * FROM customer';
 		$ret=mysqli_query($conn,$sql);
             if(mysqli_num_rows($ret)>0)
             {
                     echo"<div id='dem'>";
-					echo"<table border='1'><tr><th>USER ID</th><th>USER NAME</th><th>PHONE NUMBER</th><th>E-MAIL</th></tr>";
+					echo"<table border='1'><tr><th>CUSTOMER ID</th><th>CUSTOMER NAME</th><th>CONTACT NUMBER</th><th>E-MAIL</th></tr>";
 					while($row=mysqli_fetch_assoc($ret))
 					{
-						echo"<tr><td>{$row['user_id']}</td><td>{$row['user_name']}</td><td>{$row['user_phone']}</td><td>{$row['user_email']}</td></tr>";
+						echo"<tr><td>{$row['customer_id']}</td><td>{$row['customer_name']}</td><td>{$row['customer_phone']}</td><td>{$row['customer_email']}</td></tr>";
 					}
             
 			echo"</table>";

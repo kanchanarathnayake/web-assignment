@@ -135,7 +135,7 @@ session_start();
 		$pharmacistid = filter_input(INPUT_GET,'pharmacistid');
 		$pass = filter_input(INPUT_GET,'pass');
 		
-		$sql = "SELECT * FROM pharmacist_database WHERE pharmacist_id='$pharmacistid' AND pharmacist_password='$pass'";
+		$sql = "SELECT * FROM staff WHERE staff_id='$pharmacistid' AND staff_password='$pass'";
 		$result = $conn->query($sql);
 
 		if ($result->num_rows > 0) {

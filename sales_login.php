@@ -8,11 +8,13 @@ session_start();
 			
 			#title{
 				background-color:#00b300;
-				font-size:24px;
-				color:#E53935;
+				font-size:33px;
+				
 				
 				color:white;
 				margin-left:20px;
+				margin-top:20px;
+				margin-bottom:20px;
 				
 				}
 				
@@ -119,52 +121,59 @@ session_start();
 				}
 			}
 			
-			
 		</style>
 	</head>
 	
 	<body>
 		
-	<?php
-        if($_SESSION["adminid"] === ""){
-          echo $_SESSION['adminid'];
-          echo "login";
-          header("Location: home.php ");
-        }
-      ?>
+		
 		
 		<ul>
 			<li id="titlehead"><p id="title">Mega Phama Pvt(Ltd)</p></li>
-			<li style=margin-right:10px;><a href="admin_logout.php">Logout</a></li>
-			<li><a class="active" href="admin_home.php">Admin</a></li>
-			</ul>
+			<li style=margin-right:10px;><a href="admin_login.php">Admin</a></li>
+            <li><a href="sales_login.php">Sales Officer</a></li>
+			<li><a class="active" href="pharmacist_login.php">Stock Keeper</a></li>
+			<li><a href="user_login.php">Customer</a></li>
+			<li><a href="home.php">Home</a></li>
+		</ul>
 		
 		
+		<h2 style="font-style:italic; font-size:30px;padding-left:30px;">Stock Keeper Login</h2>
 		
-		<h2 style="font-style:italic; font-size:30px;padding-left:30px;">Delete Staff</h2>
-		
-		<div style="text-align:center;"> <img src="image\deletemain.png">  </div>
+		<div style="text-align:center;"> <img src="image\pharmacist.png">  </div>
 		
 		<div class="container">
-			<form action="delete_admin_action.php" method = "get">
-				
+			<form action="sales_login_action.php" method = "get">
 				<div class="row">
 					<div class="col-25">
-						<label for="lname">Admin Id</label>
+						<label for="fname">Sales Officer Id</label>
 					</div>
 					<div class="col-75">
-						<input type="text" pattern=".{1,}" required name="staffid" placeholder="Enter staff Id...">
+						<input type="text" pattern=".{1,}" required  name="salesid" placeholder="Your Id..">
 					</div>
 				</div>
 				
+				
 				<div class="row">
-					<input type="submit" style="margin-right:600px; margin-top:10px;" value="Delete">
+					<div class="col-25">
+						<label for="lname">Password</label>
+					</div>
+					<div class="col-75">
+						<input type="password" pattern=".{1,}" required name="pass" placeholder="Your Password...">
+					</div>
+				</div>
+				
+				
+				
+				<div class="row">
+					<input type="submit" style="margin-right:600px; margin-top:10px;" value="Submit">
 				</div>
 			</form>
 			
 			
 			
 		</div>
+		
 		
 		
 		

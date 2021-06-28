@@ -133,14 +133,14 @@ session_start();
 			die("Connection failed: " . $conn->connect_error);
 		} 
 		
-		$userid = filter_input(INPUT_GET,'userid');
+		$custormerid = filter_input(INPUT_GET,'custormerid');
 		$pass = filter_input(INPUT_GET,'pass');
 		
-		$sql = "SELECT * FROM user_database WHERE user_id='$userid' AND user_password='$pass'";
+		$sql = "SELECT * FROM customer WHERE customer_id='$custormerid' AND customer_password='$pass'";
 		$result = $conn->query($sql);
 
 		if ($result->num_rows > 0) {
-			$_SESSION["userid"] = $userid;
+			$_SESSION["customerid"] = $customerid;
 			header("Location: user_home.php");	
 		}
 		

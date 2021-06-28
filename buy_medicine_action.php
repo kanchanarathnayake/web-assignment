@@ -1,11 +1,12 @@
 <html>
 <?php
+// Start the session
 session_start();
 ?>
-        <head>
-        <style>
-		
-		#title{
+	<head>
+		<style>
+			
+			#title{
 				background-color:#00b300;
 				font-size:33px;
 				
@@ -16,7 +17,6 @@ session_start();
 				margin-bottom:20px;
 				
 				}
-				
 				
 			ul {
 			list-style-type: none;
@@ -80,7 +80,6 @@ session_start();
 				text-align: center;
 			
 			}
-			
 			#card{
 				background-color:#FFFFEF;
 				margin:150px;
@@ -104,46 +103,27 @@ session_start();
 			
 			}
 			
+		</style>
+	</head>
+	
+	<body>
 		
-		
-		
-		
-		
-		
-		table {
-			margin-left:10%;
-			margin-top:0%;
-			background-color:white;
-		}
-		th,td {
-			font-size:18pt;
-			padding:10pt;
-			text-align:center;
-		}
-            
-        </style>
-         
-         
-         </head>
-
-    <body>
 	<?php
-        if($_SESSION["userid"] === ""){
-          echo $_SESSION['userid'];
+        if($_SESSION["adminid"] === ""){
+          echo $_SESSION['adminid'];
           echo "login";
           header("Location: home.php ");
         }
       ?>
+		
 		<ul>
 			<li id="titlehead"><p id="title">Pharmacy</p></li>
-			<li style=margin-right:10px;><a href="user_logout.php">Logout</a></li>
-			<li><a class="active" href="user_home.php">User</a></li>
+			<li style=margin-right:10px;><a href="admin_logout.php">Logout</a></li>
+			<li><a class="active" href="admin_home.php">Admin</a></li>
 		</ul>
-		
-			<h2 style="font-style:italic; font-size:30px;padding-left:30px;">View Medicine</h2>
-	
 
-	<?php
+<?php
+		
 		$servername = "localhost";
 		$username = "root";
 		$password = "";
@@ -156,29 +136,54 @@ session_start();
 			die("Connection failed: " . $conn->connect_error);
 		} 
 		
-		$name = filter_input(INPUT_GET,'search');
 		
-		$sql="SELECT * FROM medicine WHERE medicine_name='$name'";
+		
+		$cid=filter_input(INPUT_GET,'cid');
+        $mediname=filter_input(INPUT_GET,'name');
+		$quantity = filter_input(INPUT_GET,'qty');
+		$type = filter_input(INPUT_GET,'type');
+        $sql="SELECT selling_price FROM medicine WHERE medicine_name='$mediname'";
 		$ret=mysqli_query($conn,$sql);
+
             if(mysqli_num_rows($ret)>0)
             {
-                    echo"<div id='dem'>";
-					echo"<table border='1'><tr><th>Medicine ID</th><th>Medicine Name</th><th>Quantity</th><th>Expiry Date</th><th>Price</th></tr>";
-					while($row=mysqli_fetch_assoc($ret))
-					{
-						echo"<tr><td>{$row['medicine_id']}</td><tr><td>{$row['medicine_name']}</td><td>{$row['quanity']}</td><td>{$row['expiry_date']}</td><td>{$row['selling_price']}</td></tr>";
-						
-					}
-            
-			echo"</table>";
-			echo"<form action='user_home.php'><button type='submit' id='done' style='margin-left:10%;margin-top:20px'>Go Back</button></form>";
-            
+				while($row=mysqli_fetch_assoc($ret))
+				{
+					$amount=$row['selling_price'];
+					
+				}
+				$_SESSION['mediname'] = $mediname;
+				$_SESSION['quantity'] = $quantity;
+
+				$amt=$amount*$quantity;
+			  	echo "<div id='card'><h2>Amount = ".$amt."</h2><form action='buy.php' method='get'><button type='submit' id='done'>Proceed</button></form></div>";
+         
             }
-            if(mysqli_num_rows($ret)==0)
-            {
-                      echo "<div id='card'><h1>No Medicine of such name  is thier....</h1><form action='user_home.php'><button type='submit' id='done'>Done</button></form></div>";
 		
-            }
-?>
-    </body>
+
+
+		$sql = "INSERT INTO purchase (mediname,quantity,Total,type,customer_id) 
+		VALUES ('$mediname', '$quantity','$amt', '$type','$cid')";
+
+
+		if ($conn->query($sql) === TRUE) {
+		//echo "New record created successfully";
+		echo "<div id='card'><p>New Admin Successfully Added</p><form action='admin_home.php' method='get'><button type='submit' id='done'>Done</button></form></div>";
+		
+		
+		
+		} else {
+			echo "Error: " . $sql . "<br>" . $conn->error;
+		}
+
+		$conn->close();
+		
+		?>
+		
+</body>
+	
+	
+	
+
+
 </html>

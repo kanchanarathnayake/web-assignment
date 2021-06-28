@@ -78,8 +78,8 @@ session_start();
 	<body>
 		
 	<?php
-        if($_SESSION["userid"] === ""){
-          echo $_SESSION['userid'];
+        if($_SESSION["customerid"] === ""){
+          echo $_SESSION['customerid'];
           echo "login";
           header("Location: home.php ");
         }

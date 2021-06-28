@@ -1,6 +1,5 @@
 <html>
 <?php
-// Start the session
 session_start();
 ?>
 	<head>
@@ -8,11 +7,13 @@ session_start();
 			
 			#title{
 				background-color:#00b300;
-				font-size:24px;
-				color:#E53935;
+				font-size:33px;
+				
 				
 				color:white;
 				margin-left:20px;
+				margin-top:20px;
+				margin-bottom:20px;
 				
 				}
 				
@@ -126,39 +127,51 @@ session_start();
 	<body>
 		
 	<?php
-        if($_SESSION["adminid"] === ""){
-          echo $_SESSION['adminid'];
+        if($_SESSION["customerid"] === ""){
+          echo $_SESSION['customerid'];
           echo "login";
-          header("Location: home.php ");
+          header("Location:home.php ");
         }
       ?>
 		
 		<ul>
 			<li id="titlehead"><p id="title">Mega Phama Pvt(Ltd)</p></li>
-			<li style=margin-right:10px;><a href="admin_logout.php">Logout</a></li>
-			<li><a class="active" href="admin_home.php">Admin</a></li>
-			</ul>
+			<li style=margin-right:10px;><a href="user_logout.php">Logout</a></li>
+			<li><a class="active" href="user_home.php">Sales Officer</a></li>
+		</ul>
 		
 		
 		
-		<h2 style="font-style:italic; font-size:30px;padding-left:30px;">Delete Staff</h2>
 		
-		<div style="text-align:center;"> <img src="image\deletemain.png">  </div>
+		<h2 style="font-style:italic; font-size:30px;padding-left:30px;"> Get Sale Report</h2>
+		
+		<div style="text-align:center;"> <img src="image\medicine.png">  </div>
 		
 		<div class="container">
-			<form action="delete_admin_action.php" method = "get">
+			<form action="sale_report_action.php" method = "get">
 				
 				<div class="row">
 					<div class="col-25">
-						<label for="lname">Admin Id</label>
+						<label for="lname">From Date</label>
 					</div>
 					<div class="col-75">
-						<input type="text" pattern=".{1,}" required name="staffid" placeholder="Enter staff Id...">
+						<input type="date" pattern=".{1,}" required name="from_date" placeholder="Select From Date">
 					</div>
 				</div>
 				
 				<div class="row">
-					<input type="submit" style="margin-right:600px; margin-top:10px;" value="Delete">
+					<div class="col-25">
+						<label for="lname">Select End Date</label>
+					</div>
+					<div class="col-75">
+						<input type="date" pattern=".{1,}" required name="to_date" placeholder=" Select End Date">
+					</div>
+				</div>
+                
+                
+				
+				<div class="row">
+					<input type="submit" style="margin-right:600px; margin-top:10px;" value="Search">
 				</div>
 			</form>
 			

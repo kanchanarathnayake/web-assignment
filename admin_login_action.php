@@ -139,7 +139,7 @@ session_start();
 				die("Connection failed: " . $conn->connect_error);
 			} 
 
-            $sql = "SELECT * FROM admin_database WHERE admin_id='$adminid' AND admin_password='$adminpass'";
+            $sql = "SELECT * FROM staff WHERE staff_id='$adminid' AND staff_password='$adminpass'";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {

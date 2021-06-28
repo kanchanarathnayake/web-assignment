@@ -136,12 +136,14 @@ session_start();
 			die("Connection failed: " . $conn->connect_error);
 		} 
 		
-		$sql = "CREATE TABLE IF NOT EXISTS admin_database (
-			admin_id VARCHAR(50) PRIMARY KEY,
-			admin_name VARCHAR(50), 
-			admin_password VARCHAR(50),
-			admin_phone VARCHAR(50),
-			admin_email VARCHAR(50)
+		$sql = "CREATE TABLE IF NOT EXISTS staff (
+			staff_id VARCHAR(50) PRIMARY KEY,
+			staff_name VARCHAR(50), 
+			staff_password VARCHAR(50),
+			staff_phone VARCHAR(50),
+			staff_email VARCHAR(50),
+            role_id varchar (50)
+            
 		)";
 
 		if ($conn->query($sql) === TRUE) {
@@ -155,11 +157,11 @@ session_start();
 		$adminpass = filter_input(INPUT_GET,'pass');
 		$adminnumber = filter_input(INPUT_GET,'number');
 		$adminemail = filter_input(INPUT_GET,'email');
-		
+		$roleid = filter_input(INPUT_GET,'roleid');
 
 
-		$sql = "INSERT INTO admin_database (admin_id, admin_name, admin_password, admin_phone, admin_email) 
-		VALUES ('$adminid', '$adminname', '$adminpass','$adminnumber','$adminemail')";
+		$sql = "INSERT INTO staff (staff_id, staff_name, staff_password, staff_phone, staff_email,role_id) 
+		VALUES ('$adminid', '$adminname', '$adminpass','$adminnumber','$adminemail','$roleid')";
 
 
 		if ($conn->query($sql) === TRUE) {

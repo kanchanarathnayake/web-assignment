@@ -127,10 +127,10 @@ session_start();
 	<body>
 		
 	<?php
-        if($_SESSION["userid"] === ""){
-          echo $_SESSION['userid'];
+        if($_SESSION["customerid"] === ""){
+          echo $_SESSION['customerid'];
           echo "login";
-          header("Location: home.php ");
+          header("Location: user_home.php ");
         }
       ?>
 		
@@ -148,9 +148,21 @@ session_start();
 		<div style="text-align:center;"> <img src="image\medicine.png">  </div>
 		
 		<div class="container">
-			<form action="cal.php" method = "get">
+			<form action="buy_medicine_action.php" method = "get">
 				
-				<div class="row">
+                <div class="row">
+					<div class="col-25">
+						<label for="lname">Customer ID</label>
+					</div>
+					<div class="col-75">
+						<input type="text" pattern=".{1,}" required name="cid" placeholder="Enter Customer ID...">
+					</div>
+				</div>
+				
+                
+                
+                
+                <div class="row">
 					<div class="col-25">
 						<label for="lname">Medicine Name</label>
 					</div>
@@ -165,6 +177,19 @@ session_start();
 					</div>
 					<div class="col-75">
 						<input type="text" pattern=".{1,}" required name="qty" placeholder=" Quantity...">
+					</div>
+				</div>
+                
+                <div class="row">
+					<div class="col-25">
+						<label for="lname">Type</label>
+					</div>
+					<div class="col-75">
+                        <select required name="type">
+                            <option>Pending</option>
+                        
+                        </select>
+						
 					</div>
 				</div>
 				

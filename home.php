@@ -91,6 +91,7 @@ session_start();
 		<ul>
 			<li id="titlehead"><p id="title">Mega PhamaPvt(Ltd)</p></li>
 			<li style=margin-right:10px;><a href="admin_login.php">Admin</a></li>
+            <li><a href="sales_login.php">Sales Officer</a></li>
 			<li><a href="pharmacist_login.php">Stock Keeper</a></li>
 			<li><a href="user_login.php">Customer</a></li>
 			<li><a class="active" href="home.php">Home</a></li>

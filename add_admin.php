@@ -150,7 +150,7 @@ session_start();
 				
 				<div class="row">
 					<div class="col-25">
-						<label for="lname">Admin Id</label>
+						<label for="lname">Staff ID </label>
 					</div>
 					<div class="col-75">
 						<input type="text" pattern=".{1,}" required name="adminid" placeholder="Enter admin Id...">
@@ -192,12 +192,28 @@ session_start();
 						<input type="email" pattern=".{1,}" required name="email" placeholder="email address...">
 					</div>
 				</div>
+                
+                <div class="row">
+					<div class="col-25">
+						<label for="lname">Role ID </label>
+					</div>
+					<div class="col-75">
+                        <select pattern=".{1,}" required name="roleid" placeholder="Enter Role Id...">
+                            <option>S001</option>
+                            <option>SK002</option>
+                            <option>A003</option>
+                        </select>
+						
+					</div>
+				</div>
 				
 				
 				
 				<div class="row">
 					<input type="submit" style="margin-right:600px; margin-top:10px;" value="Submit">
 				</div>
+                
+                
 			</form>
 			
 			

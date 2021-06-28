@@ -137,7 +137,7 @@ session_start();
 			<li><a class="active" href="admin_home.php">Admin</a></li>
 	</ul>
 
-	<h2 style="font-style:italic; font-size:30px;padding-left:30px;">View Pharmacist</h2>
+	<h2 style="font-style:italic; font-size:30px;padding-left:30px;">VIEW STAFF</h2>
 	
 	
 	<?php
@@ -156,15 +156,15 @@ session_start();
 		
 	
 	
-		$sql='SELECT * FROM pharmacist_database';
+		$sql='SELECT * FROM staff';
 		$ret=mysqli_query($conn,$sql);
             if(mysqli_num_rows($ret)>0)
             {
                     echo"<div id='dem'>";
-					echo"<table border='1'><tr><th>PHARMACIST ID</th><th>PHARMACIST NAME</th><th>PHONE NUMBER</th><th>E-MAIL</th></tr>";
+					echo"<table border='1'><tr><th>STAFF ID</th><th>STAFF  NAME</th><th> PHONE NO</th><th>E-MAIL</th><th>ROLE ID</th></tr>";
 					while($row=mysqli_fetch_assoc($ret))
 					{
-						echo"<tr><td>{$row['pharmacist_id']}</td><td>{$row['pharmacist_name']}</td><td>{$row['pharmacist_phone']}</td><td>{$row['pharmacist_email']}</td></tr>";
+						echo"<tr><td>{$row['staff_id']}</td><td>{$row['staff_name']}</td><td>{$row['staff_phone']}</td><td>{$row['staff_email']}</td><td>{$row['role_id']}</td></tr>";
 					}
             
 			echo"</table>";

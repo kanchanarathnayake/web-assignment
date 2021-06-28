@@ -136,12 +136,19 @@ session_start();
 			die("Connection failed: " . $conn->connect_error);
 		} 
 		
-		$sql = "CREATE TABLE IF NOT EXISTS medicine_database (
-            medicine_id varchar(25),
-			medicine_name VARCHAR(50), 
-			quanity VARCHAR(50),
-			expiry_date VARCHAR(50),
-			amount int(50)
+		$sql = "CREATE TABLE IF NOT EXISTS medstock (
+            stock_id varchar(25),
+			medicine_id VARCHAR(50),
+            admin_id VARCHAR(50),
+			M_date Date,
+            quanity int,
+            Expiary_date Date,
+			Buying_price int,
+            Primary key(stock_id),
+            FOREIGN KEY (medicine_id) REFERENCES medicine(medicine_id)ON UPDATE CASCADE,
+            FOREIGN KEY (admin_id) REFERENCES admin(admin_id)ON UPDATE CASCADE
+            
+            
 		)";
 
 		if ($conn->query($sql) === TRUE) {
@@ -149,16 +156,18 @@ session_start();
 		} else {
 		echo "Error creating table: " . $conn->error;
 		}
-		$medicine_ID = filter_input(INPUT_GET,'medid');
-		$medname = filter_input(INPUT_GET,'medname');
+		$stockID = filter_input(INPUT_GET,'stockid');
+        $medid = filter_input(INPUT_GET,'medid');
+        $adminid = filter_input(INPUT_GET,'adminid');
+		$mdate = filter_input(INPUT_GET,'mdate');
 		$qty = filter_input(INPUT_GET,'qty');
 		$exdate = filter_input(INPUT_GET,'exdate');
 		$amt = filter_input(INPUT_GET,'amt');
 		
 
 
-		$sql = "INSERT INTO medicine_database (medicine_id,medicine_name, quanity, expiry_date, amount) 
-		VALUES ('$medicine_ID','$medname', '$qty','$exdate','$amt')";
+		$sql = "INSERT INTO medstock(stock_id,medicine_id,admin_id,M_date, quanity, Expiary_date, Buying_price) 
+		VALUES ('$stockID','$medid','$adminid','$mdate', '$qty','$exdate','$amt')";
 
 
 		if ($conn->query($sql) === TRUE) {

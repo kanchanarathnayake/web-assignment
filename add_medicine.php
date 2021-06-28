@@ -139,7 +139,7 @@ session_start();
 		<ul>
 			<li id="titlehead"><p id="title">Pharmacy</p></li>
 			<li style=margin-right:10px;><a href="pharmacist_logout.php">Logout</a></li>
-			<li><a class="active" href="pharmacist.php">Pharmacist</a></li>
+			<li><a class="active" href="pharmacist.php">Stock keeper</a></li>
 		</ul>
 		
 		
@@ -153,19 +153,37 @@ session_start();
                 
                 <div class="row">
 					<div class="col-25">
+						<label for="lname">Stock ID</label>
+					</div>
+					<div class="col-75">
+						<input type="text" pattern=".{1,}" required name="stockid" placeholder="Enter Stock ID...">
+					</div>
+				</div>
+                
+                <div class="row">
+					<div class="col-25">
 						<label for="lname">Medicine ID</label>
 					</div>
 					<div class="col-75">
-						<input type="text" pattern=".{1,}" required name="medid" placeholder="Enter medicine ID...">
+						<input type="text" pattern=".{1,}" required name="medid" placeholder="Enter Medicine ID...">
+					</div>
+				</div>
+                
+                <div class="row">
+					<div class="col-25">
+						<label for="lname">Admin ID</label>
+					</div>
+					<div class="col-75">
+						<input type="text" pattern=".{1,}" required name="adminid" placeholder="Enter Admin ID...">
 					</div>
 				</div>
 				
 				<div class="row">
 					<div class="col-25">
-						<label for="lname">Medicine Name</label>
+						<label for="lname">Modify Date</label>
 					</div>
 					<div class="col-75">
-						<input type="text" pattern=".{1,}" required name="medname" placeholder="Enter medicine name...">
+						<input type="date" pattern=".{1,}" required name="mdate" placeholder="Enter Modify  Date...">
 					</div>
 				</div>
 				
@@ -191,10 +209,10 @@ session_start();
 				
 				<div class="row">
 					<div class="col-25">
-						<label for="lname">Amount</label>
+						<label for="lname">Buying Price</label>
 					</div>
 					<div class="col-75">
-						<input type="text" pattern=".{1,}" required name="amt" placeholder="Amount...">
+						<input type="text" pattern=".{1,}" required name="amt" placeholder="Buying price...">
 					</div>
 				</div>
 				

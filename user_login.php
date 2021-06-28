@@ -134,6 +134,7 @@
 		
 		
 		<h2 style="font-style:italic; font-size:30px;padding-left:30px;">Customer Login</h2>
+        
 		
 		<div style="text-align:center;"> <img src="image\user.png">  </div>
 		
@@ -144,7 +145,7 @@
 						<label for="fname">Customer Id</label>
 					</div>
 					<div class="col-75">
-						<input type="text" pattern=".{1,}" required  name="userid" placeholder="Your Id..">
+						<input type="text" pattern=".{1,}" required  name="custormerid" placeholder="Your Id..">
 					</div>
 				</div>
 				

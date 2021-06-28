@@ -122,6 +122,7 @@ session_start();
 			
 			
 		</style>
+        
 	</head>
 	
 	<body>
@@ -150,7 +151,7 @@ session_start();
 						<label for="lname">Customer Id</label>
 					</div>
 					<div class="col-75">
-						<input type="text" pattern=".{1,}" required name="userid" placeholder="Enter customer Id...">
+						<input type="text" pattern=".{1,}" required name="customerid" placeholder="Enter customer Id...">
 					</div>
 				</div>
 				

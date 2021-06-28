@@ -1,11 +1,12 @@
 <html>
 <?php
+// Start the session
 session_start();
 ?>
-        <head>
-        <style>
-		
-		#title{
+	<head>
+		<style>
+			
+			#title{
 				background-color:#00b300;
 				font-size:33px;
 				
@@ -16,7 +17,6 @@ session_start();
 				margin-bottom:20px;
 				
 				}
-				
 				
 			ul {
 			list-style-type: none;
@@ -104,46 +104,22 @@ session_start();
 			
 			}
 			
+		</style>
+	</head>
+	
+	<body>
 		
 		
 		
-		
-		
-		
-		table {
-			margin-left:10%;
-			margin-top:0%;
-			background-color:white;
-		}
-		th,td {
-			font-size:18pt;
-			padding:10pt;
-			text-align:center;
-		}
-            
-        </style>
-         
-         
-         </head>
-
-    <body>
-	<?php
-        if($_SESSION["userid"] === ""){
-          echo $_SESSION['userid'];
-          echo "login";
-          header("Location: home.php ");
-        }
-      ?>
 		<ul>
 			<li id="titlehead"><p id="title">Pharmacy</p></li>
-			<li style=margin-right:10px;><a href="user_logout.php">Logout</a></li>
-			<li><a class="active" href="user_home.php">User</a></li>
+			<li style=margin-right:10px;><a href="admin_login.php">Admin</a></li>
+			<li><a href="pharmacist_login.php">Pharmacist</a></li>
+			<li><a class="active" href="user_login.php">User</a></li>
+			<li><a href="home.php">Home</a></li>
 		</ul>
+<?php
 		
-			<h2 style="font-style:italic; font-size:30px;padding-left:30px;">View Medicine</h2>
-	
-
-	<?php
 		$servername = "localhost";
 		$username = "root";
 		$password = "";
@@ -156,29 +132,27 @@ session_start();
 			die("Connection failed: " . $conn->connect_error);
 		} 
 		
-		$name = filter_input(INPUT_GET,'search');
+		$salesid = filter_input(INPUT_GET,'salesid');
+		$pass = filter_input(INPUT_GET,'pass');
 		
-		$sql="SELECT * FROM medicine WHERE medicine_name='$name'";
-		$ret=mysqli_query($conn,$sql);
-            if(mysqli_num_rows($ret)>0)
-            {
-                    echo"<div id='dem'>";
-					echo"<table border='1'><tr><th>Medicine ID</th><th>Medicine Name</th><th>Quantity</th><th>Expiry Date</th><th>Price</th></tr>";
-					while($row=mysqli_fetch_assoc($ret))
-					{
-						echo"<tr><td>{$row['medicine_id']}</td><tr><td>{$row['medicine_name']}</td><td>{$row['quanity']}</td><td>{$row['expiry_date']}</td><td>{$row['selling_price']}</td></tr>";
-						
-					}
-            
-			echo"</table>";
-			echo"<form action='user_home.php'><button type='submit' id='done' style='margin-left:10%;margin-top:20px'>Go Back</button></form>";
-            
-            }
-            if(mysqli_num_rows($ret)==0)
-            {
-                      echo "<div id='card'><h1>No Medicine of such name  is thier....</h1><form action='user_home.php'><button type='submit' id='done'>Done</button></form></div>";
+		$sql = "SELECT * FROM staff WHERE staff_id='$salesid' AND staff_password='$pass'";
+		$result = $conn->query($sql);
+
+		if ($result->num_rows > 0) {
+			$_SESSION["salesid"] = $salesid;
+			header("Location: sales_home.php");	
+		}
 		
-            }
+		 else {
+			echo "<div id='card'><p>Invalid Id or Password!!!</p><p>Try again with valid Id and Password</p><form action='pharmacist_login.php' method='get'><button type='submit' id='done'>Done</button></form></div>";
+		
+		}
 ?>
-    </body>
+		
+</body>
+	
+	
+	
+
+
 </html>

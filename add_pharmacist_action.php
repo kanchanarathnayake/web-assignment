@@ -137,14 +137,7 @@ session_start();
 			die("Connection failed: " . $conn->connect_error);
 		} 
 		
-		$sql = "CREATE TABLE IF NOT EXISTS pharmacist_database (
-			pharmacist_id VARCHAR(50) PRIMARY KEY,
-			pharmacist_name VARCHAR(50), 
-			pharmacist_password VARCHAR(50),
-			pharmacist_address VARCHAR(50),
-			pharmacist_phone VARCHAR(50),
-			pharmacist_email VARCHAR(50)
-		)";
+		
 
 		if ($conn->query($sql) === TRUE) {
 		//echo "Table created successfully";

@@ -131,12 +131,12 @@ session_start();
 			die("Connection failed: " . $conn->connect_error);
 		} 
 		
-		$sql = "CREATE TABLE IF NOT EXISTS user_database (
-			user_id VARCHAR(50) PRIMARY KEY,
-			user_name VARCHAR(50), 
-			user_password VARCHAR(50),
-			user_phone VARCHAR(50),
-			user_email VARCHAR(50)
+		$sql = "CREATE TABLE IF NOT EXISTS customer (
+			customer_id VARCHAR(50) PRIMARY KEY,
+			customer_name VARCHAR(50), 
+			customer_password VARCHAR(50),
+			customer_phone VARCHAR(50),
+			customer_email VARCHAR(50)
 		)";
 
 		if ($conn->query($sql) === TRUE) {
@@ -145,25 +145,25 @@ session_start();
 		echo "Error creating table: " . $conn->error;
 		}
 		
-		$userid = filter_input(INPUT_GET,'userid');
-		$username = filter_input(INPUT_GET,'name');
-		$userpass = filter_input(INPUT_GET,'pass');
-		$usernumber = filter_input(INPUT_GET,'number');
-		$useremail = filter_input(INPUT_GET,'email');
+		$customerid = filter_input(INPUT_GET,'customerid');
+		$customername = filter_input(INPUT_GET,'name');
+		$customerpass = filter_input(INPUT_GET,'pass');
+		$customerphone = filter_input(INPUT_GET,'number');
+		$customeremail = filter_input(INPUT_GET,'email');
 		
-		$sql = "SELECT * FROM user_database WHERE user_id = '$userid'";
+		$sql = "SELECT * FROM customer WHERE customer_id = '$customerid'";
 		$result = $conn->query($sql);
 
 		if(mysqli_num_rows($result)>0){
 			echo "<div id='card'><p>User ID Already Exists</p><form action='user_signup.php' method='get'><button type='submit' id='done'>Try Again</button></form></div>";
 		}else{
-			$sql = "INSERT INTO user_database (user_id, user_name, user_password, user_phone, user_email) 
-			VALUES ('$userid', '$username', '$userpass','$usernumber','$useremail')";
+			$sql = "INSERT INTO customer (customer_id, customer_name, customer_password, customer_phone, customer_email) 
+			VALUES ('$customerid', '$customername', '$customerpass','$customerphone','$customeremail')";
 
 
 			if ($conn->query($sql) === TRUE) {
 				//echo "New record created successfully";
-				$_SESSION["userid"] = $userid;
+				$_SESSION["customer_id"] = $customerid;
 				echo "<div id='card'><p>New user Successfully Added</p><form action='user_home.php' method='get'><button type='submit' id='done'>Done</button></form></div>";
 					
 			} else {

@@ -154,15 +154,15 @@ session_start();
 		
 	
 	
-		$sql='SELECT * FROM medicine_database';
+		$sql='SELECT * FROM medicine';
 		$ret=mysqli_query($conn,$sql);
             if(mysqli_num_rows($ret)>0)
             {
                     echo"<div id='dem'>";
-					echo"<table border='1'><tr><th>Medicine Name</th><th>Quantity</th><th>Expiry Date</th><th>Amount</th></tr>";
+					echo"<table border='1'><tr><th>Medicine ID</th><th>Medicine Name</th><th>Quantity</th><th>Expiry Date</th><th>Price</th></tr>";
 					while($row=mysqli_fetch_assoc($ret))
 					{
-						echo"<tr><td>{$row['medicine_name']}</td><td>{$row['quanity']}</td><td>{$row['expiry_date']}</td><td>{$row['amount']}</td></tr>";
+						echo"<tr><td>{$row['medicine_id']}</td><td>{$row['medicine_name']}</td><td>{$row['quanity']}</td><td>{$row['expiry_date']}</td><td>{$row['selling_price']}</td></tr>";
 					}
             
 			echo"</table>";

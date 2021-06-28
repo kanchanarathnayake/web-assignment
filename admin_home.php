@@ -99,17 +99,16 @@ session_start();
 		
 		<div class="grid-container">
 			<div style="text-align:right;"> <img src="image\adminmini.png">  </div>
-			<div ><button type="button" class="btn" onclick="location.href='add_admin.php'">Add Admin</button></div>
+			<div ><button type="button" class="btn" onclick="location.href='add_admin.php'">Add Staff</button></div>
 			<div style="text-align:right;"><img src="image\pharmacistmini.png"></div>  
-			<div ><button type="button" class="btn" onclick="location.href='add_pharmacist.php'">Add Pharmacist</button></div>
-			<div style="text-align:right;"><img src="image\viewe.png"></div>  
-			<div ><button type="button" class="btn" onclick="location.href='view_pharmacist.php'">View Pharmacist</button></div>
+			  
+			<div ><button type="button" class="btn" onclick="location.href='view_pharmacist.php'">View Staff</button></div>
 			<div style="text-align:right;"><img src="image\userm.png"></div>  
-			<div ><button type="button" class="btn" onclick="location.href='view_user.php'">View User</button></div>
+			<div ><button type="button" class="btn" onclick="location.href='view_user.php'">View Customer</button></div>
 			<div style="text-align:right;"><img src="image\delete.png"></div>  
-			<div ><button type="button" class="btn" onclick="location.href='delete_admin.php'">Delete Admin</button></div>
+			<div ><button type="button" class="btn" onclick="location.href='delete_admin.php'">Delete Staff</button></div>
 			<div style="text-align:right;"><img src="image\delete.png"></div>  
-			<div ><button type="button" class="btn" onclick="location.href='delete_pharmacist.php'">Delete Pharmacist</button></div>
+			<div ><button type="button" class="btn" onclick="location.href='delete_admin.php'">Check Expieded Drugs</button></div>
 			
 		</div>
 		
